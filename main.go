@@ -1,5 +1,7 @@
 package main
 
+import "regexp"
+
 func main() {
 }
 
@@ -8,9 +10,11 @@ func main() {
 //the format, or `false` if the string does not comply
 // Difficulty: Easy
 // Estimated time: 10 min
-// Elapsed time:
+// Elapsed time: 10 min
 func testValidity(s string) bool {
-	return false
+	patern := `[-]?\d[\d]*[\]?[\d{2}]*?[-]`
+	re := regexp.MustCompile(patern)
+	return re.MatchString(s)
 }
 
 //Write a function `averageNumber` that takes the string,
