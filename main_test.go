@@ -19,7 +19,12 @@ func TestTestValidity(t *testing.T) {
 }
 
 func TestAverageNumber(t *testing.T) {
-
+	t.Run("string without numbers", func(t *testing.T) {
+		require.Equal(t, uint16(0), averageNumber("oo-ab-bb-caba-pp-haha"))
+	})
+	t.Run("string with numbers", func(t *testing.T) {
+		require.Equal(t, uint16(42), averageNumber("23-ab-48-caba-56-haha"))
+	})
 }
 
 func TestWholeStory(t *testing.T) {

@@ -1,6 +1,9 @@
 package main
 
-import "regexp"
+import (
+	"regexp"
+	"strconv"
+)
 
 func main() {
 }
@@ -12,8 +15,8 @@ func main() {
 // Estimated time: 10 min
 // Elapsed time: 10 min
 func testValidity(s string) bool {
-	patern := `[-]?\d[\d]*[\]?[\d{2}]*?[-]`
-	re := regexp.MustCompile(patern)
+	pattern := `[-]?\d[\d]*[\]?[\d{2}]*?[-]`
+	re := regexp.MustCompile(pattern)
 	return re.MatchString(s)
 }
 
@@ -21,9 +24,23 @@ func testValidity(s string) bool {
 //and returns the average number from all the numbers
 // Difficulty: Easy
 // Estimated time: 10 min
-// Elapsed time:
+// Elapsed time: 15 min
 func averageNumber(s string) uint16 {
-	return 0
+	pattern := `[0-9]+`
+	numbers := regexp.MustCompile(pattern).FindAllString(s, -1)
+
+	if len(numbers) == 0 {
+		return 0
+	}
+	total := 0
+	for _, num := range numbers {
+		parsedNum, err := strconv.Atoi(num)
+		if err != nil {
+			continue
+		}
+		total = total + parsedNum
+	}
+	return uint16(total / len(numbers))
 }
 
 //Write a function `wholeStory` that takes the string,
