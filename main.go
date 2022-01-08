@@ -3,6 +3,7 @@ package main
 import (
 	"regexp"
 	"strconv"
+	"strings"
 )
 
 func main() {
@@ -50,9 +51,11 @@ func averageNumber(s string) uint16 {
 //should return text: `"hello world"
 // Difficulty: Easy
 // Estimated time: 10 min
-// Elapsed time:
+// Elapsed time: 5 min
 func wholeStory(s string) string {
-	return ""
+	pattern := `[a-zA-Z]+`
+	words := regexp.MustCompile(pattern).FindAllString(s, -1)
+	return strings.Join(words, " ")
 }
 
 //Write a function `storyStats` that returns four things:

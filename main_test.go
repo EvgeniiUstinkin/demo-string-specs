@@ -28,7 +28,15 @@ func TestAverageNumber(t *testing.T) {
 }
 
 func TestWholeStory(t *testing.T) {
-
+	t.Run("empty string", func(t *testing.T) {
+		require.Equal(t, "", wholeStory(""))
+	})
+	t.Run("string without numbers", func(t *testing.T) {
+		require.Equal(t, "oo ab bb caba pp haha", wholeStory("oo-ab-bb-caba-pp-haha"))
+	})
+	t.Run("string with numbers", func(t *testing.T) {
+		require.Equal(t, "ab caba haha", wholeStory("23-ab-48-caba-56-haha"))
+	})
 }
 
 func TestStoryStat(t *testing.T) {
