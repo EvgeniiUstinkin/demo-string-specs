@@ -1,6 +1,8 @@
 package main
 
 import (
+	"errors"
+	"math"
 	"regexp"
 	"strconv"
 	"strings"
@@ -66,14 +68,44 @@ func wholeStory(s string) string {
 // have the length the same as the average length rounded up and down.
 // Difficulty: Normal
 // Estimated time: 15 min
-// Elapsed time:
-func storyStats(str string) (*ShortStoryDto, error) {
-	return nil, nil
+// Elapsed time: 20 min
+func storyStats(s string) (*ShortStoryDto, error) {
+	res := ShortStoryDto{
+		AverageWords: []string{},
+	}
+
+	s = strings.TrimSpace(s)
+	if s == "" {
+		return nil, errors.New("input string is empty")
+	}
+	shortest := 10000000000
+	longest := 0
+	totalLen := 0
+	words := strings.Fields(s)
+
+	for _, word := range words {
+		if shortest > len([]rune(word)) {
+			res.ShortestWord = word
+			shortest = len(word)
+		}
+		if longest <= len([]rune(word)) {
+			res.LongestWord = word
+			longest = len(word)
+		}
+		totalLen = totalLen + len(word)
+	}
+	res.AverageWordLength = float64(totalLen) / float64(len(words))
+	for _, word := range words {
+		if int(math.Round(res.AverageWordLength)) == len([]rune(word)) {
+			res.AverageWords = append(res.AverageWords, word)
+		}
+	}
+	return &res, nil
 }
 
 type ShortStoryDto struct {
 	ShortestWord      string
 	LongestWord       string
-	AverageWordLength uint16
+	AverageWordLength float64
 	AverageWords      []string
 }

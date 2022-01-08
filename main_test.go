@@ -1,6 +1,7 @@
 package main
 
 import (
+	"math"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -40,5 +41,16 @@ func TestWholeStory(t *testing.T) {
 }
 
 func TestStoryStat(t *testing.T) {
-
+	t.Run("empty string", func(t *testing.T) {
+		_, err := storyStats("")
+		require.NotNil(t, err)
+	})
+	t.Run("not empty string", func(t *testing.T) {
+		res, err := storyStats("233 ab 487 caba 569 haha")
+		require.Nil(t, err)
+		require.Equal(t, "ab", res.ShortestWord)
+		require.Equal(t, "haha", res.LongestWord)
+		require.Equal(t, 3.0, math.Round(res.AverageWordLength))
+		require.Equal(t, []string{"233", "487", "569"}, res.AverageWords)
+	})
 }
