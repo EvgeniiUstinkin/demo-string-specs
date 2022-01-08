@@ -1,6 +1,5 @@
 ![Github CI/CD](https://img.shields.io/github/workflow/status/booomch/demo-string-specs/Go)
 ![Repository Top Language](https://img.shields.io/github/languages/top/booomch/demo-string-specs)
-![Scrutinizer Code Quality](https://img.shields.io/scrutinizer/quality/g/booomch/demo-string-specs/main)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/booomch/demo-string-specs)
 ![Codacy Grade](https://img.shields.io/codacy/grade/68c42124afcf456ab0c28e2d6da7e534)
 ![Github Repository Size](https://img.shields.io/github/repo-size/booomch/demo-string-specs)
@@ -14,10 +13,10 @@
 # Test tasks
 
 **Important**:
-* [ ] tasks must be documented as if it was a programming tasks (documented for programmers)
-* [ ] task must be implemented with `Go` and  `GIT`
-* [ ] task MUST include commits for every logical block of work. It is expected to have frequent commits with meaningful messages, preferably multiple commits per-function.
-* [ ] as a solution submit your `Git` repo URL
+* [x] tasks must be documented as if it was a programming tasks (documented for programmers)
+* [x] task must be implemented with `Go` and  `GIT`
+* [x] task MUST include commits for every logical block of work. It is expected to have frequent commits with meaningful messages, preferably multiple commits per-function.
+* [x] as a solution submit your `Git` repo URL
 
 
 ### String Specs
