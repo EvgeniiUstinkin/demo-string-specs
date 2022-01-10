@@ -103,6 +103,16 @@ func storyStats(s string) (*ShortStoryDto, error) {
 	return &res, nil
 }
 
+//Write a `generate` function, that takes boolean flag
+//and generates random correct strings if the parameter
+//is `true` and random incorrect strings if the flag is `false`.
+// Difficulty: Easy
+// Estimated time: 10 min
+// Elapsed time:
+func generate(valid bool) string {
+	return ""
+}
+
 type ShortStoryDto struct {
 	ShortestWord      string
 	LongestWord       string
