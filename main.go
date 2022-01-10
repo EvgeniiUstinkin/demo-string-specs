@@ -3,9 +3,11 @@ package main
 import (
 	"errors"
 	"math"
+	"math/rand"
 	"regexp"
 	"strconv"
 	"strings"
+	"time"
 )
 
 func main() {
@@ -108,9 +110,34 @@ func storyStats(s string) (*ShortStoryDto, error) {
 //is `true` and random incorrect strings if the flag is `false`.
 // Difficulty: Easy
 // Estimated time: 10 min
-// Elapsed time:
+// Elapsed time: 15 min
 func generate(valid bool) string {
-	return ""
+	rand.Seed(time.Now().UnixNano())
+	iterations := rand.Intn(100) + 10
+	res := make([]string, 0)
+	existsAnyDefis := false
+	for i := 0; i < iterations; i++ {
+		lenRndString := rand.Intn(10) + 1
+		res = append(res, randomString(lenRndString))
+		if valid && lenRndString%2 == 0 {
+			res = append(res, "-")
+			existsAnyDefis = true
+		}
+	}
+	if valid && !existsAnyDefis {
+		res = append(res, "-")
+	}
+	return strings.Join(res, "")
+}
+
+var letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890"
+
+func randomString(n int) string {
+	b := make([]byte, n)
+	for i := range b {
+		b[i] = letters[rand.Intn(len(letters))]
+	}
+	return string(b)
 }
 
 type ShortStoryDto struct {

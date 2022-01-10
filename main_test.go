@@ -54,3 +54,13 @@ func TestStoryStat(t *testing.T) {
 		require.Equal(t, []string{"233", "487", "569"}, res.AverageWords)
 	})
 }
+func TestGenerate(t *testing.T) {
+	t.Run("invalid string", func(t *testing.T) {
+		res := generate(false)
+		require.Equal(t, false, testValidity(res))
+	})
+	t.Run("valid string", func(t *testing.T) {
+		res := generate(true)
+		require.Equal(t, true, testValidity(res))
+	})
+}
